@@ -32,7 +32,7 @@ const Form = (props) =>{
 
         <div>
                 
-                (
+                
                     
                     <div className="form-container active-form" onClick={formClickHandler}>
                             <form onSubmit={submitFormHandler} className= {isActive ? "form": ""} id="form">
@@ -105,7 +105,7 @@ const Form = (props) =>{
                                         }
                             </form>
                         </div>
-                )
+                
             
             </div>
     )
