@@ -5,9 +5,10 @@ import './Form.css';
 
 const Form = (props) =>{
 
+    const {edit} = props;
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-    const [isActive, setActiveForm] = useState(false);
+    const [isActive, setActiveForm] = useState(edit);
 
     const formClickHandler = () =>{
         console.log('form clicked on');

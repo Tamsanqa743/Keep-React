@@ -7,6 +7,10 @@ const Note = (props) =>{
 
     const [isHover, setIsHover] = useState(false);
 
+    const noteClickHandler = () =>{
+        props.toggleModal();
+    }
+
     const mouseOutHandler = () =>{
         setIsHover(false);
     }
@@ -23,6 +27,7 @@ const Note = (props) =>{
         <div className="note" id= {props.id} 
         onMouseOver={hoverOverhandler}
         onMouseOut={mouseOutHandler}
+        onClick={noteClickHandler}
         >
             
             <span className="material-icons check-circle" style={{visibility: isHover ? "visible": "hidden"}} >check_circle</span>
