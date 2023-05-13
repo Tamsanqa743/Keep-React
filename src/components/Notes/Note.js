@@ -14,9 +14,16 @@ const Note = (props) =>{
     const hoverOverhandler = ()=>{
         setIsHover(true);
     }
+
+    const deleteHandler = () =>{
+        props.deleteNote(props.id);
+    }
     return (
-        <div className="notes" onMouseOver={hoverOverhandler} onMouseOut={mouseOutHandler}>
-        <div className="note" id= 'note.id' >
+        <div className="notes" >
+        <div className="note" id= {props.id} 
+        onMouseOver={hoverOverhandler}
+        onMouseOut={mouseOutHandler}
+        >
             
             <span className="material-icons check-circle" style={{visibility: isHover ? "visible": "hidden"}} >check_circle</span>
            
@@ -41,7 +48,7 @@ const Note = (props) =>{
                     <span className="tooltip-text">New List</span>
                 </div>
                   
-                <div className="tootip archive">
+                <div className="tootip archive" onClick={deleteHandler}>
                     <span className="material-symbols-outlined hover small-icon">archive</span>
                     <span className="tooltip-text">Archive</span>
                 </div>

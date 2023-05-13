@@ -18,7 +18,13 @@ function App() {
  
   const addNote = (note)=>{
     setNotes((prevNotes) =>{
-      return [...notes, note]
+      return [...prevNotes, note]
+    });
+  };
+
+  const deleteNote = (id)=>{
+    setNotes((prevNotes) =>{
+      return prevNotes.filter(note =>id != note.id);
     });
   };
   
@@ -27,7 +33,7 @@ function App() {
      <Navbar/>
      <Sidebar/>
      <Form addNote = {addNote}/>
-     <Notes notes = {notes}/>
+     <Notes notes = {notes} deleteNote={deleteNote}/>
      <Modal/>
     </div>
   );

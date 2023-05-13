@@ -1,28 +1,32 @@
 
 import React, {useState} from 'react';
+import { uid } from 'uid';
 import './Form.css';
 
 const Form = (props) =>{
 
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-    const [isActive, setInactiveForm] = useState(false);
+    const [isActive, setActiveForm] = useState(false);
 
     const formClickHandler = () =>{
         console.log('form clicked on');
-        setInactiveForm(true); // open active form
+        setActiveForm(true); // open active form
     }
 
     const titleChangeHandler = (event)=> setTitle(event.target.value);
-    const textChangeHandler = (event) => setText(event.target.value);
+    const textChangeHandler = (event) => {
+        setText(event.target.value);
+        setActiveForm(true);
+    };
 
     const submitFormHandler = (event)=>{
         event.preventDefault();
         setTitle("");
         setText("");
-        setInactiveForm(false);  // close active form 
+        setActiveForm(false);  // close active form 
         const note = {
-            id:"",
+            id:uid(),
             title,
             text
         }
@@ -31,10 +35,7 @@ const Form = (props) =>{
 
     return (
 
-        <div>
-                
-                
-                    
+        <div>       
                     <div className="form-container active-form" onClick={formClickHandler}>
                             <form onSubmit={submitFormHandler} className= {isActive ? "form": ""} id="form">
                                 {isActive && <input id = "note-title" type="text"  value={title} className="note-title" placeholder="Title" onChange = {titleChangeHandler} />}
