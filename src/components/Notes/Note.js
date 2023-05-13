@@ -4,13 +4,26 @@ import React, {useState} from 'react';
 const Note = (props) =>{
     const [title, setTitle] = useState(props.title);
     const text = props.text;
+
+    const [isHover, setIsHover] = useState(false);
+
+    const mouseOutHandler = () =>{
+        setIsHover(false);
+    }
+
+    const hoverOverhandler = ()=>{
+        setIsHover(true);
+    }
     return (
-        <div className="notes" >
+        <div className="notes" onMouseOver={hoverOverhandler} onMouseOut={mouseOutHandler}>
         <div className="note" id= 'note.id' >
-            <span className="material-icons check-circle">check_circle</span>
+            
+            <span className="material-icons check-circle" style={{visibility: isHover ? "visible": "hidden"}} >check_circle</span>
+           
             <div className="title">{title}</div>
             <div className="text">{text}</div>
-            <div className="note-footer">
+            
+                <div className="note-footer" style={{visibility: isHover ? "visible": "hidden"}}>
                 <div className="tootip">
                     <span className="material-symbols-outlined hover small-icon">add_alert</span>
                     <span className="tooltip-text">Remind me</span>
@@ -45,6 +58,7 @@ const Note = (props) =>{
                     <span className="tooltip-text">Redo</span>
                 </div>
             </div>
+
             </div>    
         
         <div/>

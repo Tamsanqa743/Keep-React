@@ -10,7 +10,7 @@ const Form = (props) =>{
 
     const formClickHandler = () =>{
         console.log('form clicked on');
-        setInactiveForm(true);
+        setInactiveForm(true); // open active form
     }
 
     const titleChangeHandler = (event)=> setTitle(event.target.value);
@@ -20,6 +20,7 @@ const Form = (props) =>{
         event.preventDefault();
         setTitle("");
         setText("");
+        setInactiveForm(false);  // close active form 
         const note = {
             id:"",
             title,
