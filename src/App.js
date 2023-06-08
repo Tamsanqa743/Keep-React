@@ -5,17 +5,13 @@ import Form from './components/Form/Form';
 import Notes from './components/Notes/Notes';
 import Modal from './components/Modal/Modal';
 
-const NOTES = [
-  // {id: 'a123', text: 'some text1', title:'some title1'},
-  // {id: 'a124', text: 'some text2', title:'some title2'},
-  // {id: 'a125', text: 'some text3', title:'some title3'}
-
-]
+const NOTES = []
 
 function App() {
 
   const [notes, setNotes] = useState(NOTES);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
  
   const addNote = (note)=>{
     setNotes((prevNotes) =>{
@@ -39,9 +35,20 @@ function App() {
      <Navbar/>
      <Sidebar/>
      <Form addNote = {addNote}/>
-     <Notes notes = {notes} deleteNote={deleteNote} toggleModal={toggleModal}/>
-     <Modal isModalOpen={isModalOpen}/>
+     <Notes 
+        notes = {notes} 
+        deleteNote={deleteNote} 
+        toggleModal={toggleModal} 
+        setSelectedNote={setSelectedNote}/>
+     { 
+        isModalOpen && (<Modal 
+          isModalOpen={isModalOpen} 
+          selectedNote={selectedNote}
+          toggleModal={toggleModal}
+          />)
+     }
     </div>
+  
   );
 }
 

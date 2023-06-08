@@ -2,13 +2,15 @@ import './Notes.css';
 import React, {useState} from 'react';
 
 const Note = (props) =>{
-    const [title, setTitle] = useState(props.title);
-    const text = props.text;
-
+    // const text = props.text;
+    const {toggleModal, note, setSelectedNote, deleteNote} = props;
+    const [title, setTitle] = useState(note.title);
+    const [text, setText] = useState(note.text);
     const [isHover, setIsHover] = useState(false);
 
     const noteClickHandler = () =>{
-        props.toggleModal();
+        toggleModal();
+        setSelectedNote();
     }
 
     const mouseOutHandler = () =>{
@@ -20,11 +22,11 @@ const Note = (props) =>{
     }
 
     const deleteHandler = () =>{
-        props.deleteNote(props.id);
+        deleteNote(note.id);
     }
     return (
         <div className="notes" >
-        <div className="note" id= {props.id} 
+        <div className="note" id= {note.id} 
         onMouseOver={hoverOverhandler}
         onMouseOut={mouseOutHandler}
         onClick={noteClickHandler}
