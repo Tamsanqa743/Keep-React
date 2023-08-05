@@ -4,14 +4,12 @@ import { uid } from 'uid';
 import './Form.css';
 
 const Form = (props) =>{
-    console.log(props);
-    const {edit, selectedNote, toggleModal} = props;
-    const [title, setTitle] = useState(edit && selectedNote.title || "");
-    const [text, setText] = useState(edit && selectedNote.text || "");
+    const {edit, selectedNote, toggleModal, editNote} = props;
+    const [title, setTitle] = useState((edit && selectedNote.title) || "");
+    const [text, setText] = useState((edit && selectedNote.text) || "");
     const [isActive, setActiveForm] = useState(edit);
 
     const formClickHandler = () =>{
-        console.log('form clicked on');
         setActiveForm(true); // open active form
     }
 
@@ -34,6 +32,7 @@ const Form = (props) =>{
             setActiveForm(false);  // close active form 
         }
         else{
+            editNote({id:selectedNote.id, title, text} );
             toggleModal();
         }
         setTitle("");
@@ -121,24 +120,3 @@ const Form = (props) =>{
 }
 
 export default Form;
-
-{/* <div className="form-container inactive-form" onClick={formClickHandler} >
-<form>
-    <input className="note-text" type="text" placeholder="Take a note..."/>
-    <div className="form-actions">
-
-        <div className="tootip">
-            <span className="material-symbols-outlined hover">check_box</span>
-            <span className="tooltip-text">New List</span>
-        </div>
-        <div className="tootip">
-            <span className="material-symbols-outlined hover">brush</span>
-            <span className="tooltip-text">New drawing</span>
-        </div>
-        <div className="tootip">
-            <span className="material-symbols-outlined hover">image</span>
-            <span className="tooltip-text">New note with image</span>
-        </div>  
-    </div>
-</form>
-</div> */}

@@ -4,13 +4,11 @@ import React, {useState} from 'react';
 const Note = (props) =>{
     // const text = props.text;
     const {toggleModal, note, setSelectedNote, deleteNote} = props;
-    const [title, setTitle] = useState(note.title);
-    const [text, setText] = useState(note.text);
     const [isHover, setIsHover] = useState(false);
 
     const noteClickHandler = () =>{
         toggleModal();
-        setSelectedNote(note);
+        setSelectedNote(note); // handles note clicks na dtoggles modal
     }
 
     const mouseOutHandler = () =>{
@@ -34,8 +32,8 @@ const Note = (props) =>{
             
             <span className="material-icons check-circle" style={{visibility: isHover ? "visible": "hidden"}} >check_circle</span>
            
-            <div className="title">{title}</div>
-            <div className="text">{text}</div>
+            <div className="title">{note.title}</div>
+            <div className="text">{note.text}</div>
             
                 <div className="note-footer" style={{visibility: isHover ? "visible": "hidden"}}>
                 <div className="tootip">

@@ -30,6 +30,22 @@ function App() {
       return !prevState;
     });
   };
+
+  const editNote = (editedNote) =>{
+    setNotes(prevNotes =>{
+      const newNoteArr = prevNotes.map(note =>{
+        if(editedNote.id === note.id){
+          note.title = editedNote.title;
+          note.text = editedNote.text;
+        }
+        return note;
+
+    })
+    return newNoteArr;
+    })
+  }
+
+  
   return (
     <div>
      <Navbar/>
@@ -45,6 +61,7 @@ function App() {
           isModalOpen={isModalOpen} 
           selectedNote={selectedNote}
           toggleModal={toggleModal}
+          editNote={editNote}
           />)
      }
     </div>
