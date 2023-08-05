@@ -2,7 +2,7 @@ import Note from './Note';
 import react, {useState} from 'react';
 
 const Notes = (props) =>{
-    const {notes, deleteNote, toggleModal, setSelectedNote} = props;
+    const {notes, deleteNote, toggleModal, setSelectedNote, selectedNote} = props;
 
     return (
         <div className='notes' >
