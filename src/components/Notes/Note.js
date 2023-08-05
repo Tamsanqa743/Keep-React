@@ -10,7 +10,7 @@ const Note = (props) =>{
 
     const noteClickHandler = () =>{
         toggleModal();
-        setSelectedNote();
+        setSelectedNote(note);
     }
 
     const mouseOutHandler = () =>{
